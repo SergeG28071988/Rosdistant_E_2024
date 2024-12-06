@@ -1,3 +1,5 @@
+from operator import itemgetter
+
 class Car:
     def __init__(self, id, brand, model, year, salon_id):
         self.id = id
@@ -34,14 +36,18 @@ cars = [
     Car(8, "Субару", "Форестер", 2021, 4),
 ]
 
+cars_salons = [
+    CarSalon(1, 1),  # Автосалон 1 (Тойота) - Автомобиль 1 (Тойота Королла)
+    CarSalon(1, 2),  # Автосалон 1 (Тойота) - Автомобиль 2 (Toyota Camry)
+    CarSalon(2, 3),  # Автосалон 2 (Форд) - Автомобиль 3 (Форд Фокус)
+    CarSalon(2, 4),  # Автосалон 2 (Форд) - Автомобиль 4 (Форд Мондео)
+    CarSalon(3, 5),  # Автосалон 3 (Шкода) - Автомобиль 5 (Шкода Октавия)
+    CarSalon(3, 6),  # Автосалон 3 (Шкода) - Автомобиль 6 (Шкода Кодиак)
+    CarSalon(4, 7),  # Автосалон 4 (Субару) - Автомобиль 7 (Субару Импреза)
+    CarSalon(4, 8),  # Автосалон 4 (Субару) - Автомобиль 8 (Субару Форестер)
+]
 def main():
-    for salon in salons:
-        print(f"Автосалон: {salon.salon_name}")
-        for car in cars:
-            if car.salon_id == salon.id:
-                print(f" - {car.brand} {car.model} ({car.year})")
-
+    one_to_many = []
 
 if __name__ == '__main__':
     main()
-    
