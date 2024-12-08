@@ -1,1 +1,1 @@
-TOKEN = '7451800030:AAHc0rA-6oYmXqsb-Ls4ZhkA5HMZruIthWE'
+TOKEN = ''  # вставьте свой
