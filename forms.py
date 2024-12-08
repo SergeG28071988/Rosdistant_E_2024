@@ -6,7 +6,7 @@ from wtforms.fields.numeric import IntegerField, FloatField
 from wtforms.fields.simple import TextAreaField
 from wtforms.validators import DataRequired, EqualTo, ValidationError, Email
 
-from models import Rental
+from models import Rental, Message
 
 
 class RegistrationForm(FlaskForm):

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Сообщения{% endblock %}
+
+{% block content %}
+<br><br><br>
+<h1>Сообщения клиентов</h1>
+<ul>
+    {% for msg in messages %}
+        <li>
+            <strong>Имя:</strong> {{ msg.name }}<br>
+                        <strong>Телефон:</strong> {{ msg.phone }}<br>
+            <strong>Email:</strong> {{ msg.email }}<br>
+            <strong>Сообщение:</strong> {{ msg.message }}<br><br>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('contact') }}" class="btn btn-secondary">Вернуться к форме</a>
+{% endblock %}
+
+

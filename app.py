@@ -12,7 +12,6 @@ import os
 app = Flask(__name__, static_url_path='/static')
 bootstrap = Bootstrap(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///rental_cars.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///messages.db'
 app.config['SECRET_KEY'] = 'your_secret_key_here'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'static/images'  # Папка для сохранения загруженных изображений
@@ -146,7 +145,7 @@ def rental_edit(id):
             if file and allowed_file(file.filename):  # Предполагается, что у вас есть функция allowed_file
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                rental.care_photo = filename  # Сохраняем имя файла в базе данных
+                rental.car_photo = filename  # Сохраняем имя файла в базе данных
 
         rental.rental_date = datetime.strptime(request.form['rental_date'], '%Y-%m-%d')
         rental.return_date = datetime.strptime(request.form['return_date'], '%Y-%m-%d')

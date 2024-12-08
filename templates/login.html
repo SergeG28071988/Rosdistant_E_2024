@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+<br><br>
+<h1>Авторизация</h1>
+<form method="POST">
+    {{ form.csrf_token }}
+    {{ form.hidden_tag() }}
+    {{ form.email.label }} {{ form.email(class="form-control", size=32) }}<br>
+    {{ form.password.label }} {{ form.password(class="form-control", size=32) }}<br>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+<br>
+<a href="{{ url_for('register') }}">Регистрация</a>
+{% endblock %}

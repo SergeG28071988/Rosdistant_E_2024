@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ rental.renter_name }} - {{ rental.car_model }}
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="container mt-5">
+  <h1 class="text-center">Детали аренды</h1>
+  <h2 class="text-center">{{ rental.renter_name }} - {{ rental.car_model }}</h2><br>
+
+  <div class="alert alert-info">
+    <div class="row">
+      <div class="col">
+        <h4>Арендатор:</h4>
+        <p>{{ rental.renter_name }}</p>
+      </div>
+      <div class="col">
+        <h4>Модель авто:</h4>
+        <p>{{ rental.car_model }}</p>
+      </div>
+      <div class="col">
+        <h4>Фото авто:</h4>
+        {% if rental.car_photo %}
+          <img src="{{ url_for('static', filename='images/' + rental.car_photo) }}" alt="Фото авто" style="max-width: 200px;">
+        {% else %}
+          <p>Фото не доступно</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h4>Дата аренды:</h4>
+        <p>{{ rental.rental_date.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+      </div>
+      <div class="col">
+        <h4>Дата возврата:</h4>
+        <p>{{ rental.return_date.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+      </div>
+      <div class="col">
+        <h4>Категория:</h4>
+        <p>{{ rental.rental_category }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h4>Длительность аренды (дни):</h4>
+        <p>{{ rental.rental_duration }}</p>
+      </div>
+      <div class="col">
+        <h4>Стоимость аренды:</h4>
+        <p>{{ rental.rental_cost }} $</p>
+      </div>
+    </div>
+    <a href="/rentals/{{ rental.id }}/delete" class="btn btn-danger">Удалить</a>
+    <a href="/rentals/{{ rental.id }}/edit" class="btn btn-success">Изменить</a>
+    <a href="{{ url_for('rentals') }}" class="btn btn-warning">Назад</a>
+  </div>
+</div>
+{% endblock %}
