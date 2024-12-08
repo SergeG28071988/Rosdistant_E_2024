@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
+    <h1>Добавить человека</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="{{ form.surname.id_for_label }}">{{ form.surname.label }}</label>
+            {{ form.surname }}
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+            {{ form.name }}
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.date_birth.id_for_label }}">{{ form.date_birth.label }}</label>
+            {{ form.date_birth }}
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.place_residence.id_for_label }}">{{ form.place_residence.label }}</label>
+            {{ form.place_residence }}
+        </div>
+        <button type="submit" class="btn btn-success">Добавить</button>
+    </form>
+     <br>
+    <h1>Список людей</h1>
+    {% if humans %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Дата рождения</th>
+                    <th>Место проживания</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for el in humans %}
+                    <tr class="alert alert-warning mt-2">
+                        <td>{{ el.surname }}</td>
+                        <td>{{ el.name }}</td>
+                        <td>{{ el.date_birth }}</td>
+                        <td>{{ el.place_residence }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>У нас нет записей!</p>
+    {% endif %}
+
+    <div class="row text-center text-dark lh-2">
+        <h6>Количество посещений данной страницы - {{ num_visits }}</h6>
+    </div>
+{% endblock content %}

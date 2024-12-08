@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Главная страница
+{% endblock  %}
+
+{% block content  %}
+    <h1>Список людей</h1><br>
+    {% if humans %}
+        {% for el in humans %}
+            <div class="alert alert-warning mt-2 ">
+                <h3> Фамилия:  {{ el.surname  }}</h3>
+                <p>Имя: {{ el.name }}</p>
+                <h5>Дата рождения: {{ el.date_birth  }}</h5>
+                <p>Место проживания: {{ el.place_residence }}</p>
+            </div>
+        {% endfor  %}
+    {% else %}
+        <p>У нас нет записей! </p>
+    {% endif %}
+    <div class="row text-center text-dark lh-2">
+        <h6>Количество посещений данной страницы - {{ num_visits }}</h6>
+    </div>
+{% endblock content  %}

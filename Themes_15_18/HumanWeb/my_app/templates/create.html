@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Добавить человека
+{% endblock  %}
+
+{% block content  %}
+   <h1>Добавить человека</h1>
+   <form method="post">
+      {% csrf_token %}
+      {{ form.surname }}<br>
+      {{ form.name }}<br>
+      {{ form.date_birth }}<br>
+      {{ form.place_residence }}<br>
+      <button type="submit" class="btn btn-success">Добавить</button>
+      <span>{{ error }}</span>
+   </form>
+{% endblock content %}
