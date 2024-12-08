@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Список арендованных автомобилей
+{% endblock %}
+
+{% block content %}
+<br><br><br>
+    <!-- Форма поиска -->
+    <form method="POST" action="">
+        {{ search_form.hidden_tag() }}
+        <div>
+            {{ search_form.renter_name.label }} {{ search_form.renter_name(size=32) }}
+            {{ search_form.submit(class="btn btn-primary") }} {{ search_form.clear(class="btn btn-warning") }}  <!-- Кнопка очистки -->
+        </div>
+    </form><br>
+    <h1 class="text-center">Список арендованных автомобилей</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Арендатор</th>
+                <th>Модель Авто</th>
+                <th>Фото</th>
+                <th>Дата аренды</th>
+                <th>Дата возврата</th>
+                <th>Категория</th>
+                <th>Длительность (дни)</th>
+                <th>Стоимость</th>
+                <th>Детали</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rental in rentals %}
+            <tr>
+                <td>{{ rental.renter_name }}</td>
+                <td>{{ rental.car_model }}</td>
+                <td>
+                    {% if rental.car_photo %}
+                        <img src="{{ url_for('static', filename='images/' + rental.car_photo) }}" alt="Фото авто" style="width: 100px; height: auto;">
+                    {% else %}
+                        Нет фото
+                    {% endif %}
+                </td>
+                <td>{{ rental.rental_date.strftime('%Y-%m-%d') }}</td>
+                <td>{{ rental.return_date.strftime('%Y-%m-%d') }}</td>
+                <td>{{ rental.rental_category }}</td>
+                <td>{{ rental.rental_duration }}</td>
+                <td>${{ rental.rental_cost }}</td>
+                <td><a href="/rentals/{{ rental.id }}" class="btn btn-warning">Подробнее</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table><br>
+{% endblock %}
+

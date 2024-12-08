@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Аренда автомобилей
+{% endblock %}
+
+{% block content %}
+<br><br><br>
+<div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Краткосрочная аренда</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">$30<small class="text-body-secondary fw-light">/день</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Максимум 3 дня аренды</li>
+            <li>Включает страховку</li>
+            <li>Неограниченный пробег</li>
+            <li>Поддержка по телефону</li>
+          </ul>
+          <button type="button" class="w-100 btn btn-lg btn-outline-primary">Забронировать сейчас</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Долгосрочная аренда</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">$800<small class="text-body-secondary fw-light">/месяц</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Неограниченное количество дней</li>
+            <li>Включает полное покрытие страховкой</li>
+            <li>Доступ к премиум автомобилям</li>
+            <li>Приоритетная поддержка по телефону и электронной почте</li>
+          </ul>
+          <button type="button" class="w-100 btn btn-lg btn-primary">Забронировать сейчас</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-5">
+    <h2>Условия аренды</h2>
+    <p>Пожалуйста, ознакомьтесь с нашими условиями аренды:</p>
+    <ul class="list-unstyled">
+      <li>- Необходимо удостоверение личности и водительские права для аренды.</li>
+      <li>- Возврат автомобиля в том же состоянии, в котором он был взят.</li>
+      <li>- В случае повреждения автомобиля, арендатор несет ответственность за ремонт.</li>
+      <li>- Минимальный возраст для аренды - 21 год.</li>
+    </ul>
+  </div>
+
+{% endblock %}

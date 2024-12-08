@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Добавить аренду {% endblock %}
+
+{% block content %}
+<br><br><br>
+    <h2>Добавить аренду автомобиля</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group">
+            {{ form.renter_name.label(class="form-label") }}<br>
+            {{ form.renter_name(class="form-control", size=32) }}<br>
+            {% for error in form.renter_name.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.car_model.label(class="form-label") }}<br>
+            {{ form.car_model(class="form-control", size=32) }}<br>
+            {% for error in form.car_model.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.car_photo.label(class="form-label") }}<br>
+            {{ form.car_photo() }}<br>
+        </div>
+
+        <div class="form-group">
+            {{ form.rental_date.label(class="form-label") }}<br>
+            {{ form.rental_date(class="form-control") }}<br>
+        </div>
+
+        <div class="form-group">
+            {{ form.return_date.label(class="form-label") }}<br>
+            {{ form.return_date(class="form-control") }}<br>
+            {% for error in form.return_date.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.rental_category.label(class="form-label") }}<br>
+            {{ form.rental_category(class="form-control") }}<br>
+        </div>
+
+        <div class="form-group">
+            {{ form.rental_duration.label(class="form-label") }}<br>
+            {{ form.rental_duration(class="form-control") }}<br>
+            {% for error in form.rental_duration.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.rental_cost.label(class="form-label") }}<br>
+            {{ form.rental_cost(class="form-control") }}<br>
+            {% for error in form.rental_cost.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить аренду</button>
+        <a href="{{ url_for('rentals') }}" class="btn btn-warning">Назад</a>
+    </form>
+{% endblock %}

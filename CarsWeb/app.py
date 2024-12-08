@@ -11,7 +11,7 @@ import os
 
 app = Flask(__name__, static_url_path='/static')
 bootstrap = Bootstrap(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///rentals.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///rental_cars.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///messages.db'
 app.config['SECRET_KEY'] = 'your_secret_key_here'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
