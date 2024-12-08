@@ -47,7 +47,13 @@ cars_salons = [
     CarSalon(4, 8),  # Автосалон 4 (Субару) - Автомобиль 8 (Субару Форестер)
 ]
 def main():
-    one_to_many = []
+    one_to_many = [(c.brand, c.model, c.year, s.salon_name) for c in cars for s in salons if c.salon_id==s.id]
+    many_to_many_temp = [(s.salon_name, cs.salon_id, cs.car_id) for s in salons for cs in cars_salons if s.id==cs.salon_id]
+    many_to_many = [(c.brand, c.model, c.year, salon_name) for salon_name, salon_id, car_id in many_to_many_temp
+                    for c in cars if c.id==car_id]
+    print('Вывод результата')
+    result = sorted(one_to_many, key=itemgetter(2))
+    print(result)
 
 if __name__ == '__main__':
     main()
