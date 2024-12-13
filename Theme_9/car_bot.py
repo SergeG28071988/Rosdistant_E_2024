@@ -143,4 +143,4 @@ def process_delete_id_step(message):
 
 if __name__ == '__main__':
     create_database()  # Создаем базу данных при запуске
-    bot.polling(none_stop=True)
+    bot.polling(none_stop=True)    
